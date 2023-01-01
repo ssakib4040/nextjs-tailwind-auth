@@ -2,6 +2,8 @@ import { Formik } from "formik";
 import Link from "next/link";
 import React from "react";
 
+import { useSession, signIn, signOut } from "next-auth/react";
+
 export default function Register() {
   return (
     <div className="w-96 p-5 my-12 mx-auto rounded-md border ">
@@ -91,16 +93,34 @@ export default function Register() {
             </div>
 
             <div className="mb-4 ">
-              <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-pink-500 w-full">
-                Register with Facebook
+              <button
+                className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-pink-500 w-full mb-2"
+                onClick={(e) => {
+                  e.preventDefault();
+                  signIn("github", { callbackUrl: "http://localhost:3000" });
+                }}
+              >
+                Register with Github
               </button>
 
-              <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-pink-500 w-full mt-2">
+              <button
+                className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-pink-500 w-full mb-2"
+                onClick={(e) => {
+                  e.preventDefault();
+                  signIn("google", { callbackUrl: "http://localhost:3000" });
+                }}
+              >
                 Register with Google
               </button>
 
-              <button className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-pink-500 w-full mt-2">
-                Register with Github
+              <button
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-pink-500 w-full"
+                onClick={(e) => {
+                  e.preventDefault();
+                  signIn("facebook", { callbackUrl: "http://localhost:3000" });
+                }}
+              >
+                Register with Facebook
               </button>
             </div>
 

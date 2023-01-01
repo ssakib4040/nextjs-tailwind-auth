@@ -148,17 +148,19 @@ export default function Login() {
 
             <div className="mb-4 ">
               <button
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-pink-500 w-full"
-                onClick={() => {
-                  signIn("facebook", { callbackUrl: "http://localhost:3000" });
+                className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-pink-500 w-full mb-2"
+                onClick={(e) => {
+                  e.preventDefault();
+                  signIn("github", { callbackUrl: "http://localhost:3000" });
                 }}
               >
-                Login with Facebook
+                Login with Github
               </button>
 
               <button
-                className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-pink-500 w-full mt-2"
-                onClick={() => {
+                className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-pink-500 w-full mb-2"
+                onClick={(e) => {
+                  e.preventDefault();
                   signIn("google", { callbackUrl: "http://localhost:3000" });
                 }}
               >
@@ -166,12 +168,13 @@ export default function Login() {
               </button>
 
               <button
-                className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-pink-500 w-full mt-2"
-                onClick={() => {
-                  signIn("github", { callbackUrl: "http://localhost:3000" });
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-pink-500 w-full"
+                onClick={(e) => {
+                  e.preventDefault();
+                  signIn("facebook", { callbackUrl: "http://localhost:3000" });
                 }}
               >
-                Login with Github
+                Login with Facebook
               </button>
             </div>
 
