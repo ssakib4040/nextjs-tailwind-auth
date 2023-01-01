@@ -3,6 +3,7 @@ import Link from "next/link";
 import React from "react";
 
 import { useSession, signIn, signOut } from "next-auth/react";
+import Router from "next/router";
 
 export default function Login() {
   const { data: session, status } = useSession();
@@ -34,16 +35,30 @@ export default function Login() {
 
           return errors;
         }}
-        onSubmit={(values, { setSubmitting }) => {
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
-            setSubmitting(false);
-
-            signIn("credentials", {
+        onSubmit={(values, { setSubmitting, setErrors }) => {
+          setTimeout(async () => {
+            const status: any = await signIn("credentials", {
               redirect: false,
               email: values.email,
               password: values.password,
+              callbackUrl: "/",
             });
+
+            setSubmitting(false);
+
+            if (status.error) {
+              if (status.error === "User not found") {
+                setErrors({ email: status.error });
+              }
+
+              if (status.error === "Password is incorrect") {
+                setErrors({ password: status.error });
+              }
+            }
+
+            if (status.ok) {
+              Router.push("/");
+            }
           }, 400);
         }}
       >
