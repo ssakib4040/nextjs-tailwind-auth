@@ -1,8 +1,9 @@
+import Link from "next/link";
 import React from "react";
 
 export default function Login() {
   return (
-    <div className="w-96 p-5 my-20 mx-auto rounded-md border ">
+    <div className="w-96 p-5 my-12 mx-auto rounded-md border ">
       <h1 className="text-4xl font-bold mb-4 ">Login</h1>
 
       <div className="mb-4 ">
@@ -83,16 +84,15 @@ export default function Login() {
         </button>
       </div>
 
-      {/* // Already a user? login */}
       <div className="mb-4 text-center ">
         <p>
-          Don&apos;t have an account?{" "}
-          <a
+          Need an account?{" "}
+          <Link
             className="inline-block align-baseline font-bold text-sm text-zinc-500 hover:text-zinc-800"
-            href="#"
+            href="register"
           >
             Sign Up
-          </a>
+          </Link>
         </p>
       </div>
     </div>
