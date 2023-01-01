@@ -167,7 +167,7 @@ export default function Login() {
                 Login with Google
               </button>
 
-              <button
+              {/* <button
                 className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-pink-500 w-full"
                 onClick={(e) => {
                   e.preventDefault();
@@ -175,7 +175,7 @@ export default function Login() {
                 }}
               >
                 Login with Facebook
-              </button>
+              </button> */}
             </div>
 
             <div className="mb-4 text-center ">

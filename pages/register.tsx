@@ -47,7 +47,7 @@ export default function Register() {
           isSubmitting,
         }) => (
           <form onSubmit={handleSubmit}>
-            <div className="mb-4 ">
+            <div className="mb-4">
               <label
                 className="block text-gray-700 text-sm font-bold mb-2"
                 htmlFor="username"
@@ -56,9 +56,17 @@ export default function Register() {
               </label>
               <input
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-pink-500"
-                id="username"
+                id="email"
                 type="text"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.email}
               />
+              {errors.email && touched.email && (
+                <>
+                  <p className="text-red-500 text-xs italic">{errors.email}</p>
+                </>
+              )}
             </div>
 
             <div className="mb-4 ">
@@ -72,9 +80,20 @@ export default function Register() {
               <div className="">
                 <input
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-pink-500"
-                  id="username"
-                  type="text"
+                  id="password"
+                  type="password"
+                  value={values.password}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
                 />
+
+                {errors.password && touched.password && (
+                  <>
+                    <p className="text-red-500 text-xs italic">
+                      {errors.password}
+                    </p>
+                  </>
+                )}
               </div>
             </div>
 
@@ -85,7 +104,7 @@ export default function Register() {
             </div>
 
             <div className="relative mb-4">
-              <hr className="my-3" />
+              <hr className="my-4" />
 
               <div className="absolute top-[-11px] left-1/2 transform -translate-x-1/2 bg-white px-2 text-gray-500">
                 or
@@ -113,7 +132,7 @@ export default function Register() {
                 Register with Google
               </button>
 
-              <button
+              {/* <button
                 className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-pink-500 w-full"
                 onClick={(e) => {
                   e.preventDefault();
@@ -121,7 +140,7 @@ export default function Register() {
                 }}
               >
                 Register with Facebook
-              </button>
+              </button> */}
             </div>
 
             <div className="mb-4 text-center ">
