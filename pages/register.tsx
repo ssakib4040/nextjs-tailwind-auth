@@ -3,6 +3,7 @@ import Link from "next/link";
 import React from "react";
 
 import { useSession, signIn, signOut } from "next-auth/react";
+import Router from "next/router";
 
 export default function Register() {
   return (
@@ -30,10 +31,36 @@ export default function Register() {
 
           return errors;
         }}
-        onSubmit={(values, { setSubmitting }) => {
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
-            setSubmitting(false);
+        onSubmit={(values, { setSubmitting, setErrors }) => {
+          setTimeout(async () => {
+            const { email, password } = values;
+
+            await fetch("/api/auth/signup", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                email,
+                password,
+              }),
+            }).then((res) => {
+              res.json().then((data) => {
+                if (data.error == "User already exists") {
+                  setErrors({ email: "User already exists" });
+                }
+
+                if (res.status == 200) {
+                  signIn("credentials", {
+                    email,
+                    password,
+                    callbackUrl: "http://localhost:3000",
+                  });
+
+                  Router.push("/");
+                }
+              });
+            });
           }, 400);
         }}
       >
