@@ -1,4 +1,4 @@
-import { Formik } from "formik/dist/Formik";
+import { Formik } from "formik";
 import Link from "next/link";
 import React from "react";
 
