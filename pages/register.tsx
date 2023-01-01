@@ -53,15 +53,15 @@ export default function Register() {
 
       <div className="mb-4 ">
         <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-pink-500 w-full">
-          Login with Facebook
+        Register with Facebook
         </button>
 
         <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-pink-500 w-full mt-2">
-          Login with Google
+        Register with Google
         </button>
 
         <button className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-pink-500 w-full mt-2">
-          Login with Github
+        Register with Github
         </button>
       </div>
 
