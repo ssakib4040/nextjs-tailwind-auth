@@ -50,9 +50,9 @@ export default function Register() {
             <div className="mb-4">
               <label
                 className="block text-gray-700 text-sm font-bold mb-2"
-                htmlFor="username"
+                htmlFor="email"
               >
-                Username
+                Email
               </label>
               <input
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-pink-500"
@@ -72,7 +72,7 @@ export default function Register() {
             <div className="mb-4 ">
               <label
                 className="block text-gray-700 text-sm font-bold mb-2"
-                htmlFor="username"
+                htmlFor="password"
               >
                 Password
               </label>
