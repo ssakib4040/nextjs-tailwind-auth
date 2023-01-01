@@ -2,7 +2,17 @@ import { Formik } from "formik";
 import Link from "next/link";
 import React from "react";
 
+import { useSession, signIn, signOut } from "next-auth/react";
+
 export default function Login() {
+  const { data: session, status } = useSession();
+
+  console.log("loading", status);
+
+  if (status === "loading") {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div className="w-96 p-5 my-12 mx-auto rounded-md border ">
       <Formik
@@ -30,6 +40,12 @@ export default function Login() {
           setTimeout(() => {
             alert(JSON.stringify(values, null, 2));
             setSubmitting(false);
+
+            signIn("credentials", {
+              redirect: false,
+              email: values.email,
+              password: values.password,
+            });
           }, 400);
         }}
       >
@@ -133,15 +149,30 @@ export default function Login() {
             </div>
 
             <div className="mb-4 ">
-              <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-pink-500 w-full">
+              <button
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-pink-500 w-full"
+                onClick={() => {
+                  signIn("facebook", { callbackUrl: "http://localhost:3000" });
+                }}
+              >
                 Login with Facebook
               </button>
 
-              <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-pink-500 w-full mt-2">
+              <button
+                className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-pink-500 w-full mt-2"
+                onClick={() => {
+                  signIn("google", { callbackUrl: "http://localhost:3000" });
+                }}
+              >
                 Login with Google
               </button>
 
-              <button className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-pink-500 w-full mt-2">
+              <button
+                className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-pink-500 w-full mt-2"
+                onClick={() => {
+                  signIn("github", { callbackUrl: "http://localhost:3000" });
+                }}
+              >
                 Login with Github
               </button>
             </div>
